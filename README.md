@@ -1,121 +1,118 @@
-# Flet Hello World
+# Flet App Template
 
-基于 [Flet](https://flet.dev) 框架的跨平台应用模板。
+A cross-platform app template built with [Flet](https://flet.dev). One Python codebase, six platform targets.
 
-## 环境要求
+## Requirements
 
-- Python >= 3.10（推荐 3.14）
-- [uv](https://docs.astral.sh/uv/)（推荐）或 pip
+- Python >= 3.10 (recommended 3.14)
+- [uv](https://docs.astral.sh/uv/) (recommended) or pip
 
-## 安装
+## Setup
 
 ```bash
-# 使用 uv（推荐）
+# Using uv (recommended)
 uv sync --group dev
 
-# 或使用 pip + venv
+# Or using pip + venv
 python3.14 -m venv .venv
 source .venv/bin/activate
 pip install flet==0.85.3 flet-cli==0.85.3 flet-desktop==0.85.3 flet-web==0.85.3
 ```
 
-## 本地运行
+## Run Locally
 
-### 桌面窗口模式（默认）
+### Desktop window (default)
 
 ```bash
 flet run src
 ```
 
-以原生桌面窗口打开应用（macOS/Windows/Linux）。
+Opens the app as a native desktop window (macOS/Windows/Linux).
 
-### Web 浏览器模式
+### Web browser
 
 ```bash
 flet run src --web
 ```
 
-启动本地 Web 服务器，在浏览器中查看效果（默认 http://localhost:8550）。
+Starts a local web server at http://localhost:8550.
 
-### Android 模拟器/真机
+### Android emulator/device
 
 ```bash
 flet run src --android
 ```
 
-需要连接 Android 设备或运行中的模拟器（通过 adb 连接）。
+Requires a connected Android device or running emulator via adb.
 
-### iOS 模拟器
+### iOS simulator
 
 ```bash
 flet run src --ios
 ```
 
-需要 macOS + Xcode + 运行中的 iOS 模拟器。
+Requires macOS + Xcode + a running iOS simulator.
 
-## 本地打包
+## Build Locally
 
-Flet 0.85.3 会**自动下载**所需的 Flutter SDK 和 JDK，无需手动安装。
+Flet 0.85.3 auto-downloads the required Flutter SDK and JDK on first build.
 
 ```bash
-# Web
-flet build web
-
-# Android APK
-flet build apk
-
-# Android App Bundle（上传 Google Play）
-flet build aab
-
-# iOS（需要 macOS + Xcode）
-flet build ipa --no-codesign
-
-# macOS
-flet build macos
-
-# Linux（需要 GTK 开发库）
-flet build linux
-
-# Windows（需要在 Windows 上运行）
-flet build windows
+flet build web            # Web
+flet build apk            # Android APK
+flet build aab            # Android App Bundle (Google Play)
+flet build ipa            # iOS (requires macOS + Xcode)
+flet build macos          # macOS
+flet build linux          # Linux (requires GTK dev libs)
+flet build windows        # Windows (must run on Windows)
 ```
 
-构建产物输出到 `build/<platform>/` 目录。
+Build output goes to `build/<platform>/`.
 
-### 平台限制矩阵
+### Platform build matrix
 
-| 构建目标 | macOS | Linux | Windows |
+| Target  | macOS | Linux | Windows |
 |---------|-------|-------|---------|
-| web     | ✅    | ✅    | ✅      |
-| apk/aab | ✅    | ✅    | ✅      |
-| ipa     | ✅    | ❌    | ❌      |
-| macos   | ✅    | ❌    | ❌      |
-| linux   | ❌    | ✅    | ✅(WSL) |
-| windows | ❌    | ❌    | ✅      |
+| web     | Yes   | Yes   | Yes     |
+| apk/aab | Yes   | Yes   | Yes     |
+| ipa     | Yes   | No    | No      |
+| macos   | Yes   | No    | No      |
+| linux   | No    | Yes   | Yes(WSL)|
+| windows | No    | No    | Yes     |
 
-## CI/CD 打包
+## CI/CD
 
-Push 一个 `v*` 格式的 tag 即可触发 GitHub Actions 自动构建所有平台：
+Push a `v*` tag to trigger GitHub Actions builds for all platforms:
 
 ```bash
 git tag v0.1.0
 git push origin v0.1.0
 ```
 
-也可在 GitHub Actions 页面手动触发 `workflow_dispatch`。
+You can also trigger manually via `workflow_dispatch` on the Actions page.
 
-构建完成后，各平台产物会作为 Artifacts 上传，可在 Actions 运行记录中下载。
+Build artifacts are uploaded to [GitHub Releases](https://github.com/OrekiYuta/flet-app-template/releases).
 
-## 项目结构
+## GitHub Pages
+
+A static landing page is deployed at [orekiyuta.github.io/flet-app-template](https://orekiyuta.github.io/flet-app-template/) with download links for each platform.
+
+To preview locally, open `docs/index.html` in a browser.
+
+## Project Structure
 
 ```
-├── .github/workflows/build.yml   # CI/CD 多平台打包
+├── .github/workflows/
+│   ├── build.yml              # Multi-platform build + release
+│   └── pages.yml              # GitHub Pages deployment
 ├── .gitignore
-├── pyproject.toml                 # 项目配置 + Flet 构建配置
+├── docs/
+│   └── index.html             # Landing page
+├── pyproject.toml             # Project config + Flet build settings
 ├── README.md
 └── src/
     ├── assets/
-    │   ├── icon.png               # 应用图标
-    │   └── splash_android.png     # Android 启动画面
-    └── main.py                    # 应用入口
+    │   ├── icon.png           # App icon
+    │   └── splash_android.png # Android splash screen
+    └── main.py                # App entry point
 ```

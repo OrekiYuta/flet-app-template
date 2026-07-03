@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flet App Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1d1d1f;
+            background: #ffffff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 24px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #0071e3, #34c759);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 6px 14px;
+            background: #f5f5f7;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #86868b;
+        }
+
+        .platforms {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        .platforms h2 {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 48px;
+            color: #1d1d1f;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: #fbfbfd;
+            border: 1px solid #e8e8ed;
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #86868b;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #0071e3;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #0077ed;
+        }
+
+        .about {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .about p {
+            font-size: 1.05rem;
+            color: #6e6e73;
+            line-height: 1.8;
+        }
+
+        .about a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        .about a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid #e8e8ed;
+            color: #86868b;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Flet App Template</h1>
+        <p>One codebase, six platforms.<br>Demonstrating Flet's cross-platform build capabilities.</p>
+        <span class="badge">Flet 0.85.3 · Python 3.14 · Flutter 3.41.7</span>
+    </section>
+
+    <section class="platforms">
+        <h2>Download</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Android</h3>
+                <p>APK package, ARM64 supported</p>
+                <a href="https://github.com/OrekiYuta/flet-app-template/releases/latest/download/flet-hello-android.apk" class="btn">Download APK</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🍎</div>
+                <h3>iOS</h3>
+                <p>IPA bundle (debugging, unsigned)</p>
+                <a href="https://github.com/OrekiYuta/flet-app-template/releases/latest/download/flet-hello-ios.zip" class="btn">Download IPA</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>macOS</h3>
+                <p>Native macOS application</p>
+                <a href="https://github.com/OrekiYuta/flet-app-template/releases/latest/download/flet-hello-macos.zip" class="btn">Download .app</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🪟</div>
+                <h3>Windows</h3>
+                <p>Windows desktop application</p>
+                <a href="https://github.com/OrekiYuta/flet-app-template/releases/latest/download/flet-hello-windows.zip" class="btn">Download .exe</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🐧</div>
+                <h3>Linux</h3>
+                <p>Linux desktop application (GTK)</p>
+                <a href="https://github.com/OrekiYuta/flet-app-template/releases/latest/download/flet-hello-linux.tar.gz" class="btn">Download .tar.gz</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Web</h3>
+                <p>Browser-based web application</p>
+                <a href="https://github.com/OrekiYuta/flet-app-template/releases/latest/download/flet-hello-web.zip" class="btn">Download Web</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>About</h2>
+        <p>
+            This project is a <a href="https://flet.dev" target="_blank">Flet</a> cross-platform app template.
+            It demonstrates how to build and publish a single Python codebase to
+            Android, iOS, macOS, Windows, Linux, and Web using GitHub Actions CI/CD.
+            <br><br>
+            Fork this repo to kickstart your own Flet cross-platform project.
+        </p>
+    </section>
+
+    <footer>
+        <p>
+            <a href="https://github.com/OrekiYuta/flet-app-template" target="_blank">GitHub Repository</a>
+            &nbsp;·&nbsp;
+            <a href="https://github.com/OrekiYuta/flet-app-template/releases" target="_blank">All Releases</a>
+            &nbsp;·&nbsp;
+            Powered by <a href="https://flet.dev" target="_blank">Flet</a>
+        </p>
+    </footer>
+</body>
+</html>
