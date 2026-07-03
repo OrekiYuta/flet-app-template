@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install flet==0.85.3
-      - run: flet build web
+      - run: flet build web --yes
       - run: cd build/web && zip -r ../../flet-hello-web.zip .
       - uses: actions/upload-artifact@v4
         with:
@@ -33,7 +33,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install flet==0.85.3
-      - run: flet build apk
+      - run: flet build apk --yes
       - run: cp build/apk/*.apk ./flet-hello-android.apk
       - uses: actions/upload-artifact@v4
         with:
@@ -51,7 +51,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
       - run: pip install flet==0.85.3
-      - run: flet build linux
+      - run: flet build linux --yes
       - run: cd build/linux && tar -czf ../../flet-hello-linux.tar.gz .
       - uses: actions/upload-artifact@v4
         with:
@@ -66,7 +66,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install flet==0.85.3
-      - run: flet build macos
+      - run: flet build macos --yes
       - run: cd build/macos && zip -r ../../flet-hello-macos.zip .
       - uses: actions/upload-artifact@v4
         with:
@@ -81,7 +81,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install flet==0.85.3
-      - run: flet build windows
+      - run: flet build windows --yes --no-rich-output
       - run: Compress-Archive -Path build/windows/* -DestinationPath flet-hello-windows.zip
       - uses: actions/upload-artifact@v4
         with:
@@ -96,7 +96,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install flet==0.85.3
-      - run: flet build ipa --no-codesign
+      - run: flet build ipa --yes --ios-export-method debugging
       - run: cd build/ipa && zip -r ../../flet-hello-ios.zip .
       - uses: actions/upload-artifact@v4
         with:
