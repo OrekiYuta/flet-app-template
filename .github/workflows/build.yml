@@ -66,7 +66,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: pip install flet==0.85.3
-      - run: flet build macos --yes
+      - run: flet build macos --yes --arch arm64
       - run: cd build/macos && zip -r ../../flet-hello-macos.zip .
       - uses: actions/upload-artifact@v4
         with:
